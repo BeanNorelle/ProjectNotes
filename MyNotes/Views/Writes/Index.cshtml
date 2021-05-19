@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MyNotes.Models.Writes>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th width="50%">
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @*<td >
+                     @Html.DisplayFor(modelItem => item.Content)
+                  </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    <a class="iconfas" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pen"></i></a>&nbsp;
+                    <a class="iconfas" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info"></i></a>&nbsp;
+                    <a class="iconfas" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    /* unvisited link */
+    .iconfas:link {
+        color: yellow;
+    }
+
+    /* visited link */
+    .iconfas:visited{
+        color: white;
+    }
+
+    /* mouse over link */
+    .iconfas:hover{
+        color: yellow;
+    }
+
+    /* selected link */
+    .iconfas:active, .fas fa-edit, .fas fa-trash, .fas fa-info {
+        color: lawngreen;
+    }
+
+    .table {
+        align-content: center;
+        text-align: justify;
+        background-color: #1f1f1f;
+        color: white;
+        font-family: 'Lucida Console';
+    }
+
+    table {
+        width: 90%;
+        table-layout: fixed;
+    }
+
+
+    td {
+        word-wrap: break-word;
+    }
+</style>
